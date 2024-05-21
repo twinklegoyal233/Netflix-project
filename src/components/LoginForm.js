@@ -29,7 +29,9 @@ seterrorMessage(message);
     console.log(user);
   })
   .catch((error) => {
-   seterrorMessage(message)
+    const errorCOde = error.code;
+    const errorMessage = error.message;
+   seterrorMessage(errorCOde + errorMessage);
     // ..
   });
     }else{
@@ -41,7 +43,9 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
     console.log(user)
   })
   .catch((error) => {
-    seterrorMessage(message)
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrorMessage(errorCode + "-" + errorMessage);
   });
     }
 
