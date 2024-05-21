@@ -1,12 +1,14 @@
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import{ useState, useRef } from "react";
 import { checkvaliddata } from "../utils/validData";
-
+import { auth } from "../utils/firebase";
 const LoginForm = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
   const [IsSignIn, setIsSignIn] = useState(true);
   const [errorMessage, seterrorMessage] = useState(null)
+
 
   const toggleSignInForm = () => {
     setIsSignIn(!IsSignIn);
@@ -15,6 +17,34 @@ const LoginForm = () => {
   const handleSignIn = () => {
  const message = checkvaliddata(email.current.value, password.current.value)
 seterrorMessage(message);
+
+    if(message) return;
+
+    if (!IsSignIn) {
+        //signup logic
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+  })
+  .catch((error) => {
+   seterrorMessage(message)
+    // ..
+  });
+    }else{
+        //signin logic
+signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user)
+  })
+  .catch((error) => {
+    seterrorMessage(message)
+  });
+    }
+
   };
 
   return (
