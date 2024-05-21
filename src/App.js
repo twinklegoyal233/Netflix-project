@@ -1,9 +1,9 @@
 import './App.css';
-
+import Body from './components/Body';
 function App() {
   return (
-    <div className="App text-3xl  ">
-     <>hello this is twinkle</>
+    <div className="">
+      <Body/>
     </div>
   );
 }
