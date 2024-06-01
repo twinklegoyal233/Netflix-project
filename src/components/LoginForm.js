@@ -54,7 +54,7 @@ const LoginForm = () => {
             seterrorMessage(errorMessage);
           });
           
-          console.log(user);
+        
           
         })
         .catch((error) => {
@@ -73,7 +73,7 @@ const LoginForm = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+         
          
         })
         .catch((error) => {
