@@ -1,5 +1,5 @@
 import { NETFLIX_LOGO } from "../utils/constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
@@ -8,7 +8,9 @@ import { signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
+
 const Header = () => {
+  const user = useSelector(store => store.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -38,13 +40,13 @@ const Header = () => {
       // return () => unsubscribe();
     }, []);
   return (
-    <div className="w-screen absolute top-0 bg-gradient-to-b from-black flex justify-between ">
+    <div className="w-screen absolute top-0 bg-gradient-to-b from-black flex justify-between z-20 ">
       <img className="w-44 " alt="netflix-logo" src={NETFLIX_LOGO} />
 
-      <div className="flex">
+    { user &&  <div className="flex">
         <img className="w-12 h-12 mt-2 " alt="logo" src={SIGNOUT_URL}  />
     <button  onClick={handleSignOut} className="  font-bold text-white ">(Sign out) </button>
-      </div>
+      </div>}
     </div>
   );
 };
