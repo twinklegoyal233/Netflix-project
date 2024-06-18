@@ -1,7 +1,5 @@
 # Welcome to my Netflix Project!
 
-**This project showcases my skills, projects, and experiences as a web developer.**
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
