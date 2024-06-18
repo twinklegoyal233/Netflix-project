@@ -1,4 +1,4 @@
-# Welcome to my Netflix Clone Project!
+# Welcome to my Netflix Project!
 
 **This project showcases my skills, projects, and experiences as a web developer.**
 
