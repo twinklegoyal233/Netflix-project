@@ -8,7 +8,7 @@ export const MainContainer = () => {
 
   const  {original_title, overview, id } = mainMovie;
   return (
-    <div className="">
+    <div className="xl:pt-0 pt-[12%] bg-black lg:bg-transparent md:bg-transparent lg:relative lg:pt-0 xl:relative md:mt-[-7rem] ">
       <VideoTitle title = {original_title} overview = {overview}  />
       <VideoBackground movieId={id} />
 

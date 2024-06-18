@@ -1,7 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-    updateProfile
+  updateProfile,
 } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
 import { useState, useRef } from "react";
@@ -15,8 +15,6 @@ const LoginForm = () => {
 
   const [IsSignIn, setIsSignIn] = useState(true);
   const [errorMessage, seterrorMessage] = useState(null);
-
-
 
   const dispatch = useDispatch();
 
@@ -40,22 +38,24 @@ const LoginForm = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-      updateProfile(auth.currentUser, {
-            displayName: fullName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-          }).then(() => {
-            const {uid, email, displayName} = auth;
-            dispatch(addUser({
-                uid : uid,
-                email : email,
-                displayName: displayName,
-              }))
-          }).catch((error) => {
-            const errorMessage = error.message;
-            seterrorMessage(errorMessage);
-          });
-          
-        
-          
+          updateProfile(auth.currentUser, {
+            displayName: fullName.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+              seterrorMessage(errorMessage);
+            });
         })
         .catch((error) => {
           const errorCOde = error.code;
@@ -73,8 +73,6 @@ const LoginForm = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-         
-         
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,14 +81,20 @@ const LoginForm = () => {
         });
     }
   };
+  const handleGuestLogin = () => {
+    email.current.value = "twinklegoyal0@gmail.com";
+    password.current.value = "Helloworld123";
+    handleSignIn();
+  };
+
 
   return (
-    <div className="">
+    <div className="flex">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="p-12 bg-black absolute w-2/12 top-[20%] left-[40%] flex flex-col text-white bg-opacity-80 rounded-lg "
+        className="p-8 lg:p-12 bg-black absolute w-full md:w-[40%] md:left-[30%] xl:w-[30%] lg:w-[35%] lg:left-[37%] top-[20%] flex flex-col text-white bg-opacity-80 rounded-lg "
       >
-        <h1 className=" text-3xl py-4 mx-1 font-bold ">
+        <h1 className=" text-2xl md:3xl py-4 mx-1 font-bold ">
           {IsSignIn ? "Sign In" : "Sign Up"}
         </h1>
         {IsSignIn ? (
@@ -118,9 +122,15 @@ const LoginForm = () => {
 
         <button
           onClick={handleSignIn}
-          className="bg-red-700 p-4 my-6 rounded-lg"
+          className="bg-red-700 p-4 my-2 rounded-lg"
         >
           {IsSignIn ? "Sign In" : "Sign Up"}
+        </button>
+        <div className="flex justify-center">
+          <p>OR</p>
+        </div>
+        <button onClick={handleGuestLogin} className="bg-red-700 p-4 my-2 rounded-lg">
+          Login as Guest
         </button>
         <p className="text-red-500 p-2 font-bold">{errorMessage}</p>
         <p className="p-2  cursor-pointer " onClick={toggleSignInForm}>

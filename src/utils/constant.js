@@ -14,4 +14,5 @@ export const API_OPTIONS  = {
   
   export const  MOVIE_CDN_LINK = "https://image.tmdb.org/t/p/w500/";
 
-  export const LANGUAGE_SUPPORTED = [{identifier : "eng", name : "English"}, {identifier : "hindi", name: "Hindi"}]
+
+  export const OPENAI_KEY = "sk-proj-3gnOhTp6OGMbR0PPVZMfT3BlbkFJUC41xZTSJJdok8IFdRB0"

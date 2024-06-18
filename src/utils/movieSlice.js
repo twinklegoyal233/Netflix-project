@@ -24,7 +24,7 @@ const movieSlice = createSlice({
     },
     addTopRatedMovies : (state, action) => {
       state.topRatedMovies= action.payload;
-  }
+}
 
   },
 });
