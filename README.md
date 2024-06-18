@@ -23,7 +23,8 @@
 - **Firebase:** A platform for web and mobile application development.
 - **Redux:** A state management library for JavaScript applications.
 - **TMDB API:** An API to fetch movie data.
-- **HTML5 & CSS3:** Markup and styling languages for building web pages.
+- **HTML5:** Markup for building web pages.
+ **Tailwind CSS:** A utility-first CSS framework for rapidly building custom user interfaces.
 - **JavaScript:** A programming language for adding interactivity to web applications.
 
 ## Installation
